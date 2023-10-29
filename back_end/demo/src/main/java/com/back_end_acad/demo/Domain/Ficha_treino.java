@@ -2,6 +2,9 @@ package com.back_end_acad.demo.Domain;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -11,6 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.*;
 
 
@@ -42,8 +46,14 @@ public class Ficha_treino {
     private LocalDate data_cadastro;
 
     @ManyToOne
-    @JoinColumn(name="usuario_id", nullable=false)
+    @JoinColumn (nullable=false)
+    @JsonBackReference
     private Usuario usuario;
+
+    @OneToOne(mappedBy = "ficha_treino" ,optional=false)
+    @JsonManagedReference
+    private Lista_exercicios exercicios_list;
+
     
     // muda o status da ficha para INATIVO
     public void inactivate (){
@@ -51,11 +61,21 @@ public class Ficha_treino {
     }
     
     // ativa a ficha de treino se não estiver cancelado
-    public void activate(){
+    public boolean activate(){
         if( !status.equals(Status.CANCELADO)){
             status = Status.ATIVO;
+            return true;
         }
-        
+        return false;
+    }
+
+    public boolean cancel() {
+
+        if( status.equals(Status.CANCELADO)){
+            return false;
+        }
+        status = Status.CANCELADO;
+        return true;
     }
 }
 

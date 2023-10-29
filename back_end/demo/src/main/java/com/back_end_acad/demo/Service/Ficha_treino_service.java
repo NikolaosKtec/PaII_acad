@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.back_end_acad.demo.Domain.Ficha_treino;
-import com.back_end_acad.demo.repository.Ficha_treino_repository;
+import com.back_end_acad.demo.Repository.Ficha_treino_repository;
 
 @Service
 public class Ficha_treino_service {
@@ -24,10 +24,10 @@ public class Ficha_treino_service {
         
     }
 
-    public Ficha_treino search(Long id) {
+    public Optional<Ficha_treino> search(Long id) {
         
         Optional<Ficha_treino> uOptional = repository.findById(id);
-        return uOptional.orElse(null);
+        return uOptional;
     }
 
     public List<Ficha_treino> list_all() {

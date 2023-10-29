@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.back_end_acad.demo.Domain.Usuario;
-import com.back_end_acad.demo.repository.Usuario_repository;
+import com.back_end_acad.demo.Repository.Usuario_repository;
 
 @Service
 public class Usuario_service {
@@ -25,10 +25,10 @@ public class Usuario_service {
         
     }
 
-    public Usuario search(Long id) {
+    public Optional<Usuario> search(Long id) {
         
         Optional<Usuario> uOptional = repository.findById(id);
-        return uOptional.orElse(null);
+        return uOptional;
     }
 
     public List<Usuario> list_all() {

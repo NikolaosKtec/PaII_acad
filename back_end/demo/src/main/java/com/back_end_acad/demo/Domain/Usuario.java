@@ -1,8 +1,10 @@
 package com.back_end_acad.demo.Domain;
 
 
-import java.util.List;
+
 import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -45,7 +47,8 @@ public class Usuario {
     @Column(length = 48, nullable = false)
     private String email;
 
-    @OneToMany(mappedBy="usuario")
+    @OneToMany(mappedBy = "usuario")
+    @JsonManagedReference
     private Set<Ficha_treino> ficha_treinos;
 
     

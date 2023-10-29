@@ -1,4 +1,4 @@
-package com.back_end_acad.demo.repository;
+package com.back_end_acad.demo.Repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
