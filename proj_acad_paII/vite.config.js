@@ -10,5 +10,14 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  css: {
+    loaderOptions: {
+      scss: {
+        prependData: `
+          @import "@/scss/_variables.scss";
+        `
+      }
+    }
   }
 })
