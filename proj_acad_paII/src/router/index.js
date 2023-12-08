@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../components/home/Home.vue'
-import Login from '../components/login/Login.vue'
+import Home from '../pages/home/Home.vue'
+import Login from '../pages/login/Login.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,7 +8,10 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      meta: {
+        requiresAuth: false // Add meta field to indicate protected route
+      }
     },
     {
       path: '/login',
@@ -20,6 +23,23 @@ const router = createRouter({
       // component: () => import('../views/AboutView.vue')
     }
   ]
-})
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth) {
+    const token = localStorage.getItem('token');
+    if (token) {
+      // User is authenticated, proceed to the route
+      next();
+    } else {
+      // User is not authenticated, redirect to login
+      next('/login');
+    }
+  } else {
+    // Non-protected route, allow access
+    next();
+  }
+});
+
 
 export default router
