@@ -1,50 +1,73 @@
-<script>
+<script setup>
 import { ref } from 'vue'
-export default {
-   data(){
-    const text = ref('ola')
-    
 
-    function doLogin(){
-        alert(text.value)
-    }
-    
+import axios from 'axios';
+     
+    const input_login = ref('')
+    const input_senha = ref('')
 
-    
-    // expose the ref to the template
-    return {
-      text,doLogin
-    }
-   }
-}
+   
+   
+     
+      function doLogin(e){
+        // e.preventDefault();
+        // console.log("click!");
+        // axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*'
+        axios.post('http://localhost:8080/login', {
+            headers: {
+            'Access-Control-Allow-Origin': '*',
+         
+          },
+            login: this.input_login,
+            senha: this.input_senha
+          })
+          .then((response) => {
+            // console.log(response);
+            console.log(response.data);
+          }, (error) => {
+            console.log(error);
+          });
+
+        localStorage.setItem("token", this.input_senha);
+      }
+  
+
+      
+
 
 </script>
 
 <template>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       
-        <h1 class="m-auto">Logue para acessar painel</h1>
+       
       
     </nav>
+  
     <br/>
     <br/>
     <br/>
     <br/>
-    <form class="container-fluid w-50 ms-auto mt-5" >
-          <div class="mb-3 ">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input   type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    
+     <!-- <p>{{input_login}}</p> -->
+    
+    <form @submit.prevent="doLogin()"  class="container-fluid w-50 ms-auto mt-5"  >
+    <div class="mb-3 ">
+        <h1 >Logue para acessar o painel</h1>
+        <label for="login input" class="form-label">Login</label>
+        <input v-model="input_login"  type="text" class="form-control" id="login input" aria-describedby="loginhelp">
+        <div id="loginhelp" class="form-text">We'll never share your email with anyone else.</div>
   </div>
+
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
+    <label for="exampleInputPassword1" class="form-label">Senha de acesso</label>
+    <input v-model="input_senha" type="password" class="form-control" id="exampleInputPassword1">
   </div>
-  <div class="mb-3 form-check">
+  <!-- <div class="mb-3 form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button v-on:click="doLogin" type="submit" class="btn btn-primary">Entrar</button>
+  </div> -->
+  <button type="submit" class="btn btn-primary">Entrar</button>
 </form>
 
 

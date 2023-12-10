@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.back_end_acad.demo.Domain.Ficha_treino;
 import com.back_end_acad.demo.Domain.Status;
-import com.back_end_acad.demo.Domain.Usuario;
+
 
 import com.back_end_acad.demo.Service.Ficha_treino_service;
 @RestController

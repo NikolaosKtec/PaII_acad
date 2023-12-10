@@ -1,3 +1,4 @@
+
 <script>
 export default {
   data () {
@@ -19,8 +20,9 @@ export default {
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">Área do admin</a></li>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li> 
+          <!-- link -->
+          <li><router-link to="/admin">Área do admin</router-link></li>
           <li><a class="nav-link scrollto" href="#services">Serviços</a></li>
           <!-- <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li> -->
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
