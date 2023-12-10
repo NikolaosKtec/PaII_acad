@@ -39,11 +39,11 @@ public class Ficha_treino_controller {
   @PostMapping("/ficha_de_treino")
   public HttpStatus newFicha_de_treino(@RequestBody Ficha_treino ficha_treino) {
      
-    Usuario usuario = ficha_treino.getUsuario();
+    // Usuario usuario = ficha_treino.getUsuario();
 
-    if (usuario.equals(null)) {
-        return HttpStatus.BAD_REQUEST;
-    }
+    // if (usuario.equals(null)) {
+    //     return HttpStatus.BAD_REQUEST;
+    // }
 
     fTreino_service.insert(ficha_treino);
 
