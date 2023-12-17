@@ -13,7 +13,7 @@ import axios from 'axios';
         // e.preventDefault();
         // console.log("click!");
         // axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*'
-        axios.post('http://localhost:8080/login', {
+        axios.post('/login', {
             headers: {
             'Access-Control-Allow-Origin': '*',
          

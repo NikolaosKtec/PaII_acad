@@ -15,7 +15,7 @@ export default {
       <div class="logo">
         <!-- Uncomment below if you prefer to use an text logo -->
         <!-- <h1><a href="index.html">NewBiz</a></h1> -->
-        <a href="index.html"><img src="src/pages/home/assets/img/logo.png" alt="" class="img-fluid"></a>
+        <a href="index.html"><img src="../../pages/home/assets/img/logo.png" alt="" class="img-fluid"></a>
       </div>
 
       <nav id="navbar" class="navbar">

@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.back_end_acad.demo.Domain.Ficha_treino;
 import com.back_end_acad.demo.Domain.Usuario;
 import com.back_end_acad.demo.Domain.dto.user_dto;
+import com.back_end_acad.demo.Domain.dto.user_dto_new;
 import com.back_end_acad.demo.Service.Usuario_service;
 
 
@@ -46,5 +48,24 @@ public class Usuario_controller {
         }
 
     //    return HttpStatus.ACCEPTED;
+    }
+
+    @PostMapping("/usuario")
+    public HttpStatus create_user(@RequestBody user_dto_new dto){
+
+
+
+        Usuario user = new Usuario(dto.login(), dto.senha(), dto.email(),null  );
+
+        try {
+            service.insert(user);
+
+        } catch (Exception e) {
+            return HttpStatus.BAD_REQUEST;
+        }
+        
+       
+
+       return HttpStatus.ACCEPTED;
     }
 }

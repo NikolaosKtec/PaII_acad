@@ -1,0 +1,23 @@
+FROM openjdk:17-jdk-alpine
+EXPOSE 8080
+
+
+
+ARG USER_HOME_DIR="/root"
+# gradle-8.2.1
+
+
+
+RUN mkdir -p /usr/app
+
+
+WORKDIR /usr/app
+COPY docker-entrypoint.sh .
+RUN chmod +x docker-entrypoint.sh
+
+
+RUN git clone https://github.com/furmiga/exemplo-springboot.git
+RUN mvn -f  /usr/app/exemplo-springboot clean package -DskipTests
+
+
+ENTRYPOINT ["/usr/app/docker-entrypoint.sh"]
