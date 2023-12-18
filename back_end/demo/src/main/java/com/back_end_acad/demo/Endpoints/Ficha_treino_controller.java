@@ -76,7 +76,7 @@ public class Ficha_treino_controller {
     return HttpStatus.OK;
 }
 
-  @PutMapping("/employees/{id}")
+  @PutMapping("/ficha_de_treino/{id}")
   public HttpStatus cancelFicha_de_treino(@PathVariable Long id) {
 
     var oFtreino = fTreino_service.search(id);
@@ -93,7 +93,7 @@ public class Ficha_treino_controller {
     }
   }
   // so deleta se ja estiver cancelado
-  @DeleteMapping("/employees/{id}")
+  @DeleteMapping("/ficha_de_treino/{id}")
   public HttpStatus deleteFicha_de_treino(@PathVariable Long id) {
 
     var oFtreino = fTreino_service.search(id);
