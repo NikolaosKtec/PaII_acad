@@ -20,15 +20,6 @@
     "sass": "^1.69.5",
     "sass-loader": "^13.3.2",
     "vite": "^3.0.9"
-  },
-  "config": {
-    "devServer": {
-      "proxy": {
-          "^/login":{
-              "target": "http://localhost:8080",
-              "changeOrigin": true
-          }
-      }
-    }
   }
+
 }

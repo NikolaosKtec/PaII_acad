@@ -12,15 +12,15 @@ export default {
     <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex justify-content-between">
 
-      <div class="logo">
+      <div class="position-absolute start-0">
         <!-- Uncomment below if you prefer to use an text logo -->
         <!-- <h1><a href="index.html">NewBiz</a></h1> -->
-        <a href="index.html"><img src="../../pages/home/assets/img/logo.png" alt="" class="img-fluid"></a>
+        <router-link to="/"><img src="../../assets/aquarius-logo.jpeg" alt="" class="img-fluid"></router-link>
       </div>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li> 
+          <li><router-link to="/">Home</router-link></li> 
           <!-- link -->
           <li><router-link to="/admin">Área do admin</router-link></li>
           <li><a class="nav-link scrollto" href="#services">Serviços</a></li>

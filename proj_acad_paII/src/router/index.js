@@ -15,8 +15,8 @@ const router = createRouter({
       }
     },
     {
-      path: '/login',
-      name: 'login',
+      path: '/auth',
+      name: 'auth',
       component: Login,
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
@@ -37,12 +37,13 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth) {
     const token = localStorage.getItem('token');
-    if (token) {
+    
+    if (token == 'ACCEPTED') {
       // User is authenticated, proceed to the route
       next();
     } else {
       // User is not authenticated, redirect to login
-      next('/login');
+      next('/auth');
     }
   } else {
     // Non-protected route, allow access

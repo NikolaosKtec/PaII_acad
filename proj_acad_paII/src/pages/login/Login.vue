@@ -10,25 +10,28 @@ import axios from 'axios';
    
      
       function doLogin(e){
+        
         // e.preventDefault();
         // console.log("click!");
         // axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*'
         axios.post('/login', {
-            headers: {
-            'Access-Control-Allow-Origin': '*',
+          //   headers: {
+          //   'Access-Control-Allow-Origin': '*',
          
-          },
+          // },
             login: this.input_login,
             senha: this.input_senha
           })
           .then((response) => {
             // console.log(response);
+            
             console.log(response.data);
+            localStorage.setItem("token", response.data);
           }, (error) => {
             console.log(error);
           });
 
-        localStorage.setItem("token", this.input_senha);
+       
       }
   
 
