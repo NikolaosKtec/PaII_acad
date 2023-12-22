@@ -26,6 +26,9 @@ export default defineConfig({
         target: 'http://localhost:8080'
         
       } ,
+      '/ficha_de_treino': {
+        target: 'http://localhost:8080'
+      },
     }
 
   }

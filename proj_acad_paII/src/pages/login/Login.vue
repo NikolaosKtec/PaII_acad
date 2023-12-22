@@ -5,7 +5,7 @@ import axios from 'axios';
      
     const input_login = ref('')
     const input_senha = ref('')
-
+    const login_ok = ref(true)
    
    
      
@@ -15,10 +15,7 @@ import axios from 'axios';
         // console.log("click!");
         // axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*'
         axios.post('/login', {
-          //   headers: {
-          //   'Access-Control-Allow-Origin': '*',
-         
-          // },
+          
             login: this.input_login,
             senha: this.input_senha
           })
@@ -27,8 +24,17 @@ import axios from 'axios';
             
             console.log(response.data);
             localStorage.setItem("token", response.data);
+            
+            if (response.data === 'ACCEPTED') {
+              this.login_ok = true
+              window.location.href = '/admin'
+            }else{
+              this.login_ok = false
+            }
+            
           }, (error) => {
             console.log(error);
+            this.login_ok = false
           });
 
        
@@ -58,20 +64,25 @@ import axios from 'axios';
     <div class="mb-3 ">
         <h1 >Logue para acessar o painel</h1>
         <label for="login input" class="form-label">Login</label>
-        <input v-model="input_login"  type="text" class="form-control" id="login input" aria-describedby="loginhelp">
+        <input v-model="input_login"  type="text" class="form-control" id="login input" required>
         <div id="loginhelp" class="form-text">We'll never share your email with anyone else.</div>
   </div>
 
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Senha de acesso</label>
-    <input v-model="input_senha" type="password" class="form-control" id="exampleInputPassword1">
+    <input v-model="input_senha" type="password" class="form-control" id="exampleInputPassword1" required>
   </div>
   <!-- <div class="mb-3 form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
   </div> -->
   <button type="submit" class="btn btn-primary">Entrar</button>
+  <p class="alert alert-danger " role="alert" v-if="login_ok == false">Ops, algo deu errado!</p>
 </form>
+<br>
+<br>
+<br>
+
 
 
 </template>
