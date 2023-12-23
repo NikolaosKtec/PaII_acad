@@ -8,8 +8,9 @@ export default {
 </script>
 
 <template>
-    <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top d-flex align-items-center">
+   
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex justify-content-between">
 
       <div class="position-absolute start-0">
@@ -25,11 +26,11 @@ export default {
           <li><router-link to="/admin">Área do admin</router-link></li>
           <li><a class="nav-link scrollto" href="#services">Serviços</a></li>
           <!-- <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li> -->
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
          
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+         
+          <li><a class="nav-link scrollto" href="">---</a></li>
         </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
+        
       </nav><!-- .navbar -->
 
     </div>
